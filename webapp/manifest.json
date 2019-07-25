@@ -9,12 +9,27 @@
 		},
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/Z_JING_C_SALESORDER_TX_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": [
+						"Z_JING_C_SALESORDER_TX_CDS_VAN"
+					]
+				}
+			},
+			"Z_JING_C_SALESORDER_TX_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='Z_JING_C_SALESORDER_TX_CDS_VAN',Version='0001')/$value/",
+				"type": "ODataAnnotation"
+			}
+		},
+		"offline": false,
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.38.11"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -33,10 +48,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "com.mtk.jingUI5_smarttable.view.RootView",
@@ -47,7 +60,8 @@
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {},
+				"sap.ui.comp": {}
 			}
 		},
 		"contentDensities": {
@@ -60,12 +74,26 @@
 				"settings": {
 					"bundleName": "com.mtk.jingUI5_smarttable.i18n.i18n"
 				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"refreshAfterChange": false,
+					"metadataUrlParams": {
+						"sap-value-list": "none"
+					}
+				}
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -77,11 +105,15 @@
 				"controlId": "idAppControl",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteRootView",
-				"pattern": "RouteRootView",
-				"target": ["TargetRootView"]
-			}],
+			"routes": [
+				{
+					"name": "RouteRootView",
+					"pattern": "RouteRootView",
+					"target": [
+						"TargetRootView"
+					]
+				}
+			],
 			"targets": {
 				"TargetRootView": {
 					"viewType": "XML",
@@ -91,5 +123,9 @@
 				}
 			}
 		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/zjingui5_st/webapp",
+		"_version": "1.1.0"
 	}
 }
