@@ -7,10 +7,13 @@ sap.ui.define([
 	return Controller.extend("com.mtk.jingUI5_smarttable.controller.RootView", {
 		onInit: function () {
 			//var oModel, oView;
-			//oModel = new ODataModel("/sap/opu/odata/sap/Z_JING_C_SALESORDER_TX_CDS/", true);
+			//oModel = new ODataModel("/sap/opu/odata/sap/Z_JING_C_SO_CDS/", true);
 			//oModel.setCountSupported(false);
 			//oView = this.getView();
 			//oView.setModel(oModel);
+		},
+		onNavToDetail: function(oEvt){
+			this.getRouter().navTo("RouteDetailView", {});
 		},
 		onBeforeExport: function (oEvt) {
 			var mExcelSettings = oEvt.getParameter("exportSettings");
@@ -38,6 +41,9 @@ sap.ui.define([
 
 			// Disable Worker if Mockserver is used in explored
 			mExcelSettings.worker = true;
+		},
+		getRouter: function(){
+			return sap.ui.core.UIComponent.getRouterFor(this);
 		}
 	});
 });

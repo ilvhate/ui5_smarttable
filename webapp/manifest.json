@@ -11,16 +11,16 @@
 		"description": "{{appDescription}}",
 		"dataSources": {
 			"mainService": {
-				"uri": "/sap/opu/odata/sap/Z_JING_C_SALESORDER_TX_CDS/",
+				"uri": "/sap/opu/odata/sap/Z_JING_C_SO_CDS/",
 				"type": "OData",
 				"settings": {
 					"annotations": [
-						"Z_JING_C_SALESORDER_TX_CDS_VAN"
+						"Z_JING_C_SO_CDS_VAN"
 					]
 				}
 			},
-			"Z_JING_C_SALESORDER_TX_CDS_VAN": {
-				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='Z_JING_C_SALESORDER_TX_CDS_VAN',Version='0001')/$value/",
+			"Z_JING_C_SO_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='Z_JING_C_SO_CDS_VAN',Version='0001')/$value/",
 				"type": "ODataAnnotation"
 			}
 		},
@@ -101,16 +101,23 @@
 				"viewType": "XML",
 				"async": true,
 				"viewPath": "com.mtk.jingUI5_smarttable.view",
-				"controlAggregation": "pages",
 				"controlId": "idAppControl",
+				"controlAggregation": "pages",
 				"clearControlAggregation": false
 			},
 			"routes": [
 				{
 					"name": "RouteRootView",
-					"pattern": "RouteRootView",
+					"pattern": "",
 					"target": [
 						"TargetRootView"
+					]
+				},
+				{
+					"name": "RouteDetailView",
+					"pattern": "RouteDetailView",
+					"target": [
+						"TargetDetailView"
 					]
 				}
 			],
@@ -120,6 +127,11 @@
 					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewName": "RootView"
+				},
+				"TargetDetailView": {
+					"viewType": "XML",
+					"transition": "slide",
+					"viewName": "DetailView"
 				}
 			}
 		}
