@@ -13,7 +13,10 @@ sap.ui.define([
 			//oView.setModel(oModel);
 		},
 		onNavToDetail: function(oEvt){
-			this.getRouter().navTo("RouteDetailView", {});
+			var oItem, oCtx;
+			oItem = oEvt.getSource();
+			oCtx = oItem.getBindingContext();
+			this.getRouter().navTo("RouteDetailView", {salesOrder : oCtx.getProperty("SalesOrder")});
 		},
 		onBeforeExport: function (oEvt) {
 			var mExcelSettings = oEvt.getParameter("exportSettings");

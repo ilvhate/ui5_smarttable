@@ -1,21 +1,23 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
 	xmlns:f="sap.ui.layout.form" 
 	controllerName="com.mtk.jingUI5_smarttable.controller.DetailView" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page showNavButton="true" navButtonPress="onNavBack">
 					<f:SimpleForm id="SimpleFormChange" editable="false" layout="ResponsiveGridLayout" title="" singleContainerFullSize="false" labelSpanXL="4"
 						labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0"
 						columnsXL="2" columnsL="2" columnsM="1">
 						<f:content>
-							<core:Title text="Basic"/>
-							<Label text="Id"/>
-							<Text id="idText" text="id"/>
-							<Label text="Fullname"/>
-							<Text text="fullname"/>
-							<Label text="Client"/>
-							<Text text="client"/>
-							<Label text="Language"/>
-							<Text id="langText" text="language"/>
-							<Label text="Email"/>
-							<Text id="mailText" text="email"/>
+							<core:Title text="Order Detail"/>
+							<Label text="Sales Order"/>
+							<Text id="soText" text="{SalesOrder}"/>
+							<Label text="Business Partner"/>
+							<Text text="{CompanyName}"/>
+							<Label text="Gross Amount"/>
+							<Text text="{GrossAmount}"/>
+							<Label text="Currency"/>
+							<Text id="currText" text="{CurrencyCode}"/>
+							<Label text="Overall Status"/>
+							<Text id="stateText" text="{OverallStatus}"/>
 						</f:content>
 					</f:SimpleForm>
+					</Page>
 </mvc:View>

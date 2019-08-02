@@ -1,6 +1,7 @@
 <mvc:View controllerName="com.mtk.jingUI5_smarttable.controller.RootView" xmlns:mvc="sap.ui.core.mvc"
 	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
 	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns="sap.m">
+	<Page title="{i18n>title}" enableScrolling="true">
 		<smartFilterBar:SmartFilterBar id="myFilterBar" entitySet="Z_JING_C_SO" persistencyKey="SmartFilter_Explored"
 			considerSelectionVariants="true">
 			<smartFilterBar:controlConfiguration>
@@ -11,7 +12,7 @@
 				</smartFilterBar:ControlConfiguration>
 				<smartFilterBar:ControlConfiguration key="BusinessPartner">
 					<smartFilterBar:defaultFilterValues>
-						<smartFilterBar:SelectOption low="100000000"></smartFilterBar:SelectOption>
+						<smartFilterBar:SelectOption low="100000000" high="100000002" operator="BT"></smartFilterBar:SelectOption>
 					</smartFilterBar:defaultFilterValues>
 				</smartFilterBar:ControlConfiguration>
 			</smartFilterBar:controlConfiguration>
@@ -25,4 +26,5 @@
 				</items>
 			</Table>
 		</smartTable:SmartTable>
+		</Page>
 </mvc:View>

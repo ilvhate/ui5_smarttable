@@ -11,9 +11,43 @@ sap.ui.define([
 		 * @memberOf com.mtk.jingUI5_smarttable.view.DetailView
 		 */
 		onInit: function () {
-
+			var oRouter = this.getRouter();
+			oRouter.getRoute("RouteDetailView").attachMatched(this._onRouteMatched, this);
 		},
 
+		onNavBack: function () {
+			history.go(-1);
+		},
+		
+		_onRouteMatched : function (oEvent) {
+			var oArgs, oView;
+			oArgs = oEvent.getParameter("arguments");
+			oView = this.getView();
+
+			oView.bindElement({
+				path : "/Z_JING_C_SO('" + oArgs.salesOrder + "')",
+				events : {
+					change: this._onBindingChange.bind(this),
+					dataRequested: function (oEvent) {
+						oView.setBusy(true);
+					},
+					dataReceived: function (oEvent) {
+						oView.setBusy(false);
+					}
+				}
+			});
+		},
+
+		_onBindingChange : function (oEvent) {
+			// No data for the binding
+			if (!this.getView().getBindingContext()) {
+				this.getRouter().getTargets().display("notFound");
+			}
+		},
+		
+		getRouter : function () {
+			return sap.ui.core.UIComponent.getRouterFor(this);
+		},
 		/**
 		 * Similar to onAfterRendering, but this hook is invoked before the controller's View is re-rendered
 		 * (NOT before the first rendering! onInit() is used for that one!).
